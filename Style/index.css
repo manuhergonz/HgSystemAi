@@ -1930,6 +1930,272 @@ body {
   }
 }
 
+/* ============================================
+   SAAS MOCKUPS (SERVICES)
+   ============================================ */
+.saas-mockup {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.service-card:hover .saas-mockup {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 233, 245, 0.2) inset;
+  border-color: rgba(99, 233, 245, 0.3);
+}
+
+.saas-mockup__header {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.saas-mockup__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.saas-mockup__dot--red { background: #ff5f56; }
+.saas-mockup__dot--yellow { background: #ffbd2e; }
+.saas-mockup__dot--green { background: #27c93f; }
+
+.saas-mockup__body {
+  padding: 16px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. Automatizaciones Mockup (Nodes) */
+.mockup-nodes {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+.mockup-node {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(99, 233, 245, 0.1);
+  border: 1px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(99, 233, 245, 0.2);
+}
+.mockup-node svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--cyan);
+}
+.mockup-node--active {
+  animation: node-pulse 2s infinite;
+}
+.mockup-line {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: rgba(99, 233, 245, 0.2);
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.mockup-line-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: var(--cyan);
+  animation: line-flow 2s infinite;
+}
+@keyframes node-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(99, 233, 245, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 20px rgba(99, 233, 245, 0.6); transform: scale(1.05); }
+}
+@keyframes line-flow {
+  0% { left: 0; width: 0; opacity: 1; }
+  50% { left: 0; width: 100%; opacity: 1; }
+  100% { left: 100%; width: 0; opacity: 0; }
+}
+
+/* 2. Agentes Autónomos Mockup (Dashboard) */
+.mockup-dash {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mockup-dash-header {
+  display: flex;
+  gap: 10px;
+}
+.mockup-dash-card {
+  flex: 1;
+  height: 30px;
+  background: rgba(167, 139, 250, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  animation: dash-pulse 3s infinite alternate;
+}
+.mockup-dash-body {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.mockup-dash-bar {
+  flex: 1;
+  background: var(--accent-violet);
+  border-radius: 4px 4px 0 0;
+  opacity: 0.8;
+  animation: bar-grow 2s infinite alternate;
+  transform-origin: bottom;
+}
+.mockup-dash-bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+.mockup-dash-bar:nth-child(2) { height: 70%; animation-delay: 0.2s; }
+.mockup-dash-bar:nth-child(3) { height: 50%; animation-delay: 0.4s; }
+.mockup-dash-bar:nth-child(4) { height: 90%; animation-delay: 0.6s; }
+.mockup-dash-bar:nth-child(5) { height: 60%; animation-delay: 0.8s; }
+@keyframes dash-pulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+@keyframes bar-grow {
+  0% { transform: scaleY(0.8); }
+  100% { transform: scaleY(1.1); }
+}
+
+/* 3. Chatbots Mockup (WhatsApp) */
+.mockup-chat {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mockup-msg {
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  opacity: 0;
+  animation: msg-appear 4s infinite;
+}
+.mockup-msg--left {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom-left-radius: 2px;
+}
+.mockup-msg--right {
+  align-self: flex-end;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #fff;
+  border-bottom-right-radius: 2px;
+}
+.mockup-msg:nth-child(1) { animation-delay: 0s; }
+.mockup-msg:nth-child(2) { animation-delay: 1s; }
+.mockup-msg:nth-child(3) { animation-delay: 2s; }
+@keyframes msg-appear {
+  0%, 5% { opacity: 0; transform: translateY(10px); }
+  10%, 80% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+.mockup-typing {
+  display: flex;
+  gap: 3px;
+  padding: 4px;
+}
+.mockup-typing span {
+  width: 4px;
+  height: 4px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+.mockup-typing span:nth-child(2) { animation-delay: 0.2s; }
+.mockup-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* 4. Llamadas Mockup (Waveform) */
+.mockup-call {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.mockup-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-deep), var(--cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.mockup-avatar::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  animation: avatar-ripple 2s infinite;
+}
+.mockup-avatar svg {
+  width: 24px;
+  height: 24px;
+  stroke: #fff;
+}
+.mockup-waves {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+}
+.mockup-wave {
+  width: 4px;
+  background: var(--cyan);
+  border-radius: 2px;
+  animation: wave-bounce 1s infinite alternate;
+}
+.mockup-wave:nth-child(1) { height: 10px; animation-delay: 0.1s; }
+.mockup-wave:nth-child(2) { height: 20px; animation-delay: 0.3s; }
+.mockup-wave:nth-child(3) { height: 30px; animation-delay: 0.5s; }
+.mockup-wave:nth-child(4) { height: 15px; animation-delay: 0.2s; }
+.mockup-wave:nth-child(5) { height: 25px; animation-delay: 0.4s; }
+@keyframes avatar-ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes wave-bounce {
+  0% { transform: scaleY(0.5); }
+  100% { transform: scaleY(1); }
+}
+
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
   width: 6px;

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HerGonz AI Agency — Transforma Tu Negocio con Inteligencia Artificial</title>
+  <meta name="description" content="HerGonz AI Agency: Soluciones de Inteligencia Artificial para empresas. Automatizaciones, chatbots, agentes autónomos y llamadas automáticas con IA. Ahorra tiempo, reduce costes y multiplica resultados.">
+  <meta name="keywords" content="inteligencia artificial, automatización empresarial, chatbots, agentes IA, llamadas automáticas IA, HerGonz">
+  <meta name="author" content="HerGonz AI Agency">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HerGonz AI Agency — Transforma Tu Negocio con IA">
+  <meta property="og:description" content="Soluciones de IA para empresas. Ahorra hasta 30 horas semanales y reduce costes operativos un 40%.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logoHDpng.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- ============================================
+       PARTICLE CANVAS BACKGROUND
+       ============================================ -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar__logo">
+        <img src="img/logoHDpng.png" alt="HerGonz AI Agency Logo">
+        <span class="navbar__logo-text">HerGonz<span>AI</span></span>
+      </a>
+
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#contacto" class="navbar__cta">Consultoría Gratuita</a></li>
+      </ul>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero" id="hero">
+    <!-- Ambient Glow Orbs -->
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__orb hero__orb--3"></div>
+
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge" id="hero-badge">
+          <span class="pulse-dot"></span>
+          Agencia #1 en Automatización con IA
+        </div>
+
+        <h1 class="hero__title">
+          Transforma tu negocio con <span class="gradient-text">Inteligencia Artificial</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Implementamos soluciones de IA que trabajan 24/7 para que tú puedas centrarte en lo que realmente importa: <strong>hacer crecer tu negocio.</strong>
+        </p>
+
+        <div class="hero__actions">
+          <a href="#contacto" class="btn-primary btn-glow" id="hero-cta">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            Agenda Tu Consultoría Gratuita
+          </a>
+          <a href="#servicios" class="btn-secondary">
+            Ver Servicios
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <div class="hero__stat-number" data-count="150">0+</div>
+            <div class="hero__stat-label">Procesos automatizados</div>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <div class="hero__stat-number" data-count="40">0%</div>
+            <div class="hero__stat-label">Reducción de costes</div>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <div class="hero__stat-number" data-count="24">0/7</div>
+            <div class="hero__stat-label">Disponibilidad total</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <!-- Holographic Dashboard -->
+        <div class="hero__holo-card">
+          <div class="hero__holo-card-glow"></div>
+          <div class="hero__holo-header">
+            <span class="hero__holo-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Dashboard IA
+            </span>
+            <span class="hero__holo-live">
+              <span class="live-dot"></span>
+              En vivo
+            </span>
+          </div>
+
+          <!-- Automation Rows -->
+          <div class="hero__auto-row hero__auto-row--cyan">
+            <div class="hero__auto-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v1H6a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a3 3 0 0 0 6 0v-1h1a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3V5a3 3 0 0 0-3-3z"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+            </div>
+            <div class="hero__auto-info">
+              <div class="hero__auto-name">Chatbot WhatsApp</div>
+              <div class="hero__auto-detail">352 conversaciones hoy</div>
+            </div>
+            <div class="hero__auto-badge hero__auto-badge--active">Activo</div>
+          </div>
+
+          <div class="hero__auto-row hero__auto-row--blue">
+            <div class="hero__auto-icon hero__auto-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#36658f" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/></svg>
+            </div>
+            <div class="hero__auto-info">
+              <div class="hero__auto-name">Llamadas Automáticas</div>
+              <div class="hero__auto-detail">87 citas confirmadas</div>
+            </div>
+            <div class="hero__auto-badge hero__auto-badge--active">Activo</div>
+          </div>
+
+          <div class="hero__auto-row hero__auto-row--violet">
+            <div class="hero__auto-icon hero__auto-icon--violet">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+            <div class="hero__auto-info">
+              <div class="hero__auto-name">Agente Autónomo</div>
+              <div class="hero__auto-detail">1,240 tareas procesadas</div>
+            </div>
+            <div class="hero__auto-badge hero__auto-badge--active">Activo</div>
+          </div>
+
+          <!-- Mini Stats -->
+          <div class="hero__holo-stats">
+            <div class="hero__holo-stat">
+              <div class="hero__holo-stat-value">€7,450</div>
+              <div class="hero__holo-stat-label">Ahorrados este mes</div>
+            </div>
+            <div class="hero__holo-stat">
+              <div class="hero__holo-stat-value hero__holo-stat-value--emerald">320h</div>
+              <div class="hero__holo-stat-label">Horas liberadas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Notification Cards -->
+        <div class="floating-card floating-card--1">
+          <div class="floating-card__icon floating-card__icon--green">✅</div>
+          <div>
+            <div class="floating-card__text">Lead cualificado</div>
+            <div class="floating-card__sub">Hace 2 min</div>
+          </div>
+        </div>
+
+        <div class="floating-card floating-card--2">
+          <div class="floating-card__icon floating-card__icon--cyan">📊</div>
+          <div>
+            <div class="floating-card__text">ROI +340%</div>
+            <div class="floating-card__sub">Último trimestre</div>
+          </div>
+        </div>
+
+        <div class="floating-card floating-card--3">
+          <div class="floating-card__icon floating-card__icon--violet">🎯</div>
+          <div>
+            <div class="floating-card__text">98% satisfacción</div>
+            <div class="floating-card__sub">Clientes activos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Lines Overlay -->
+    <div class="hero__grid-lines"></div>
+  </section>
+
+  <!-- ============================================
+       SERVICIOS SECTION
+       ============================================ -->
+  <section class="services" id="servicios">
+    <!-- Background Glow -->
+    <div class="section-glow"></div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Nuestros servicios</span>
+        <h2 class="section-title">Soluciones de IA <span class="gradient-text">a Medida para Tu Negocio</span></h2>
+        <p class="section-subtitle">Desde automatizaciones simples hasta agentes autónomos que trabajan por ti. Implementamos la tecnología que tu empresa necesita.</p>
+      </div>
+
+      <div class="services__grid">
+        <!-- Servicio 1: Automatizaciones con IA -->
+        <div class="service-card reveal" id="service-automations">
+          <div class="service-card__glow"></div>
+          <span class="service-card__number">01</span>
+          <div class="service-card__icon-wrapper">
+            <svg class="service-card__svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <defs><linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#63e9f5"/><stop offset="100%" style="stop-color:#36658f"/></linearGradient></defs>
+              <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 18v3M8 21h8"/><path d="M6 10h.01M10 10h.01"/><path d="M14 10h4M14 14h4M6 14h4"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Automatizaciones con IA</h3>
+          <p class="service-card__desc">Optimiza procesos en RRHH, Finanzas, Marketing y Operaciones. Flujos de trabajo digitales que se ejecutan automáticamente sin intervención humana.</p>
+          <ul class="service-card__features">
+            <li>Ahorro de 10-20 horas semanales por departamento</li>
+            <li>Integración con Make.com + IA avanzada</li>
+            <li>Sin necesidad de conocimientos técnicos</li>
+            <li>Implementación en menos de 2 semanas</li>
+          </ul>
+          <span class="service-card__tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            Make.com + IA
+          </span>
+        </div>
+
+        <!-- Servicio 2: Agentes Autónomos -->
+        <div class="service-card reveal" id="service-agents">
+          <div class="service-card__glow"></div>
+          <span class="service-card__number">02</span>
+          <div class="service-card__icon-wrapper service-card__icon-wrapper--violet">
+            <svg class="service-card__svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad-violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <defs><linearGradient id="grad-violet" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#7c3aed"/></linearGradient></defs>
+              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.27A7 7 0 0 1 7.27 19H6a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h-1v-1.27C12.4 5.39 12 4.74 12 4a2 2 0 0 1 2-2z"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M9 17s1 2 3 2 3-2 3-2"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Agentes Autónomos de IA</h3>
+          <p class="service-card__desc">Trabajadores digitales 24/7 que ejecutan tareas sin intervención humana. Sistemas inteligentes que operan de forma independiente.</p>
+          <ul class="service-card__features">
+            <li>Análisis de datos automatizado</li>
+            <li>Gestión inteligente de inventarios</li>
+            <li>Seguimiento automático de clientes</li>
+            <li>Toma de decisiones basada en datos</li>
+          </ul>
+          <span class="service-card__tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            N8n + Modelos de IA
+          </span>
+        </div>
+
+        <!-- Servicio 3: Chatbots Inteligentes -->
+        <div class="service-card reveal" id="service-chatbots">
+          <div class="service-card__glow"></div>
+          <span class="service-card__number">03</span>
+          <div class="service-card__icon-wrapper service-card__icon-wrapper--emerald">
+            <svg class="service-card__svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad-emerald)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <defs><linearGradient id="grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#63e9f5"/><stop offset="100%" style="stop-color:#10b981"/></linearGradient></defs>
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Chatbots Inteligentes</h3>
+          <p class="service-card__desc">Atención al cliente 24/7 por WhatsApp y Web. Interfaces conversacionales futuristas que filtran leads y gestionan reservas automáticamente.</p>
+          <ul class="service-card__features">
+            <li>WhatsApp Business + Web integrados</li>
+            <li>Gestión automática de reservas</li>
+            <li>Filtrado y cualificación de leads</li>
+            <li>Ideal para clínicas, peluquerías, estéticas</li>
+          </ul>
+          <span class="service-card__tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp + Web
+          </span>
+        </div>
+
+        <!-- Servicio 4: Llamadas Automáticas -->
+        <div class="service-card reveal" id="service-calls">
+          <div class="service-card__glow"></div>
+          <span class="service-card__number">04</span>
+          <div class="service-card__icon-wrapper service-card__icon-wrapper--blue">
+            <svg class="service-card__svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <defs><linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#36658f"/><stop offset="100%" style="stop-color:#63e9f5"/></linearGradient></defs>
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <path d="M14.05 2a9 9 0 0 1 8 7.94M14.05 6A5 5 0 0 1 18 10"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Llamadas Automáticas con IA</h3>
+          <p class="service-card__desc">Confirmación de citas, llamadas de ventas y atención al cliente totalmente automatizadas con voz natural y ondas de audio inteligentes.</p>
+          <ul class="service-card__features">
+            <li>Confirmación automática de citas</li>
+            <li>Llamadas salientes para ventas</li>
+            <li>Atención al cliente con voz natural</li>
+            <li>Integración completa con tu CRM</li>
+          </ul>
+          <span class="service-card__tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Integración CRM
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROCESO SECTION
+       ============================================ -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Cómo funciona</span>
+        <h2 class="section-title">Un Proceso Simple, <span class="gradient-text">Resultados Extraordinarios</span></h2>
+        <p class="section-subtitle">De la primera llamada a tener tu IA funcionando en tiempo récord. Sin complicaciones, sin interrumpir tu negocio.</p>
+      </div>
+
+      <div class="process__timeline reveal">
+        <div class="process-step">
+          <div class="process-step__number">
+            <div class="process-step__number-inner">1</div>
+          </div>
+          <h3 class="process-step__title">Auditoría Gratuita</h3>
+          <p class="process-step__text">Analizamos tus procesos actuales e identificamos las mayores oportunidades de automatización con IA.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__number">
+            <div class="process-step__number-inner">2</div>
+          </div>
+          <h3 class="process-step__title">Propuesta Personalizada</h3>
+          <p class="process-step__text">Diseñamos tu solución de IA a medida con ROI estimado, plazos claros y sin letra pequeña.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__number">
+            <div class="process-step__number-inner">3</div>
+          </div>
+          <h3 class="process-step__title">Implementación</h3>
+          <p class="process-step__text">Configuramos todo sin interrumpir tu operación diaria. Tú sigues facturando mientras nosotros construimos.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__number">
+            <div class="process-step__number-inner">4</div>
+          </div>
+          <h3 class="process-step__title">Soporte Continuo</h3>
+          <p class="process-step__text">Te acompañamos en cada paso. Optimización continua, formación de tu equipo y soporte prioritario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MÉTRICAS DE CONFIANZA
+       ============================================ -->
+  <section class="metrics" id="resultados">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Resultados reales</span>
+        <h2 class="section-title">Métricas que Hablan <span class="gradient-text">por Sí Solas</span></h2>
+        <p class="section-subtitle">No hablamos de teoría. Estos son resultados medibles que hemos conseguido para nuestros clientes.</p>
+      </div>
+
+      <div class="metrics__grid reveal">
+        <div class="metric-card metric-card--cyan">
+          <div class="metric-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="metric-card__amount" data-count="85">0%</div>
+          <div class="metric-card__label">Aumento de Productividad</div>
+          <div class="metric-card__desc">Nuestros clientes incrementan su productividad drásticamente con automatizaciones inteligentes.</div>
+          <div class="metric-card__bar"><div class="metric-card__bar-fill" style="--fill-width: 85%"></div></div>
+        </div>
+
+        <div class="metric-card metric-card--blue">
+          <div class="metric-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#36658f" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="metric-card__amount" data-count="40">0%</div>
+          <div class="metric-card__label">Reducción de Costes</div>
+          <div class="metric-card__desc">Reducimos los costes operativos eliminando tareas manuales y procesos ineficientes.</div>
+          <div class="metric-card__bar"><div class="metric-card__bar-fill metric-card__bar-fill--blue" style="--fill-width: 40%"></div></div>
+        </div>
+
+        <div class="metric-card metric-card--emerald">
+          <div class="metric-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="metric-card__amount" data-count="3">0x</div>
+          <div class="metric-card__label">Crecimiento Empresarial</div>
+          <div class="metric-card__desc">Nuestros clientes multiplican su capacidad operativa sin aumentar plantilla.</div>
+          <div class="metric-card__bar"><div class="metric-card__bar-fill metric-card__bar-fill--emerald" style="--fill-width: 100%"></div></div>
+        </div>
+
+        <div class="metric-card metric-card--violet">
+          <div class="metric-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <div class="metric-card__amount" data-count="98">0%</div>
+          <div class="metric-card__label">Satisfacción del Cliente</div>
+          <div class="metric-card__desc">El 98% de nuestros clientes recomendarían nuestros servicios de IA.</div>
+          <div class="metric-card__bar"><div class="metric-card__bar-fill metric-card__bar-fill--violet" style="--fill-width: 98%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BENEFICIOS SECTION
+       ============================================ -->
+  <section class="benefits" id="beneficios">
+    <div class="section-glow section-glow--right"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Beneficios</span>
+        <h2 class="section-title">¿Por Qué Elegir <span class="gradient-text">HerGonz AI Agency</span>?</h2>
+        <p class="section-subtitle">Resultados tangibles que transforman tu negocio desde el primer mes.</p>
+      </div>
+
+      <div class="benefits__grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Ahorra 15-30 horas semanales</h3>
+          <p class="benefit-card__text">Elimina tareas manuales y repetitivas. Tu equipo se enfoca en actividades de alto valor que generan ingresos.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Reduce costes hasta un 40%</h3>
+          <p class="benefit-card__text">Menos errores, menos tiempo perdido, menos personal necesario para las mismas tareas. El ahorro es inmediato.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Disponibilidad 24/7</h3>
+          <p class="benefit-card__text">Tus chatbots y agentes trabajan mientras duermes. Atención al cliente, ventas y gestión sin parar.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Mejora la experiencia del cliente</h3>
+          <p class="benefit-card__text">Respuestas instantáneas, seguimiento personalizado y un servicio impecable que fideliza clientes.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Escala sin aumentar plantilla</h3>
+          <p class="benefit-card__text">Multiplica tu capacidad operativa sin multiplicar costes. Crece de forma inteligente y sostenible.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#63e9f5" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16 8l-8 8M8 8l8 8"/></svg>
+          </div>
+          <h3 class="benefit-card__title">ROI en menos de 60 días</h3>
+          <p class="benefit-card__text">Nuestras soluciones se pagan solas. Verás retorno de inversión antes de completar el segundo mes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA FINAL SECTION
+       ============================================ -->
+  <section class="cta-section" id="contacto">
+    <div class="container">
+      <div class="cta-section__wrapper reveal">
+        <div class="cta-section__bg-glow"></div>
+        <div class="cta-section__content">
+          <div class="cta-section__text">
+            <span class="section-label">Da el primer paso</span>
+            <h2 class="cta-section__title">
+              Agenda Tu Consultoría <span class="gradient-text">Gratuita Hoy</span>
+            </h2>
+            <p class="cta-section__subtitle">
+              En 30 minutos analizamos tu negocio y te mostramos exactamente cómo la IA puede ahorrarte tiempo, dinero y dolores de cabeza. Sin compromiso.
+            </p>
+
+            <div class="cta-section__bonus">
+              <span class="cta-section__bonus-icon">🎁</span>
+              <div class="cta-section__bonus-text">
+                <strong>BONUS GRATUITO</strong>
+                Descarga gratis: "Checklist de 10 Procesos que Puedes Automatizar Ya" — Valorado en €97, tuyo por agendar hoy.
+              </div>
+            </div>
+          </div>
+
+          <form class="cta-form" id="contactForm">
+            <h3 class="cta-form__title">📅 Reserva tu consultoría</h3>
+            <p class="cta-form__subtitle">Completa el formulario y te contactamos en menos de 24h</p>
+
+            <div class="form-group">
+              <label for="form-name">Nombre completo</label>
+              <input type="text" id="form-name" name="name" placeholder="Ej: María García" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email">Email profesional</label>
+              <input type="email" id="form-email" name="email" placeholder="Ej: maria@miempresa.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-phone">Teléfono</label>
+              <input type="tel" id="form-phone" name="phone" placeholder="Ej: +34 612 345 678" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-business">Tipo de negocio</label>
+              <select id="form-business" name="business" required>
+                <option value="" disabled selected>Selecciona tu sector</option>
+                <option value="clinica">Clínica / Centro de salud</option>
+                <option value="peluqueria">Peluquería / Centro estético</option>
+                <option value="despacho">Despacho profesional</option>
+                <option value="ecommerce">E-commerce / Retail</option>
+                <option value="inmobiliaria">Inmobiliaria</option>
+                <option value="restauracion">Restauración / Hostelería</option>
+                <option value="consultoria">Consultoría / Servicios B2B</option>
+                <option value="otro">Otro sector</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-primary btn-glow" id="form-submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Quiero Mi Consultoría Gratuita
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#" class="footer__brand-logo">
+            <img src="img/logoHDpng.png" alt="HerGonz AI">
+            <span class="footer__brand-name">HerGonz<span>AI</span></span>
+          </a>
+          <p class="footer__brand-desc">Transformamos negocios con Inteligencia Artificial. Automatizaciones, chatbots, agentes autónomos y llamadas automáticas para empresas que quieren crecer sin límites.</p>
+          <div class="footer__social">
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram" title="Instagram" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn" title="LinkedIn" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="#" aria-label="Facebook" title="Facebook" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" aria-label="YouTube" title="YouTube" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="#" aria-label="TikTok" title="TikTok" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Servicios</h4>
+          <ul class="footer__links">
+            <li><a href="#service-automations">Automatizaciones IA</a></li>
+            <li><a href="#service-agents">Agentes Autónomos</a></li>
+            <li><a href="#service-chatbots">Chatbots Inteligentes</a></li>
+            <li><a href="#service-calls">Llamadas con IA</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Empresa</h4>
+          <ul class="footer__links">
+            <li><a href="#resultados">Resultados</a></li>
+            <li><a href="#proceso">Cómo Funciona</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Contacto</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="mailto:info@hergonzai.com">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                hergonz.aiagency@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+34612345678">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +34 614 803 734
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/34614803734" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2026 HerGonz AI Agency. Todos los derechos reservados.</p>
+        <div class="footer__legal">
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Aviso Legal</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       WHATSAPP FLOATING BUTTON
+       ============================================ -->
+  <a href="https://wa.me/34612345678" target="_blank" rel="noopener" id="whatsapp-btn" class="whatsapp-float" title="Chatea con nosotros por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-float__pulse"></span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 3. Envío real a n8n
-            const respuesta = await fetch('https://n8n.hgsystemai.com/webhook-test/contacto-web', {
+            const respuesta = await fetch('https://n8n.hgsystemai.com/webhook/contacto-web', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

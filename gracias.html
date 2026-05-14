@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mensaje recibido — HgSystemAi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0f;
+      --surface:   #111118;
+      --border:    rgba(255,255,255,0.07);
+      --accent:    #6c5ce7;
+      --accent2:   #00cec9;
+      --text:      #f0f0f5;
+      --muted:     #7b7b8f;
+      --success:   #00b894;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    /* Fondo con puntos */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(108,92,231,0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow central */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(108,92,231,0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem 3.5rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(28px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+
+    /* Línea superior de acento */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+      border-radius: 999px;
+    }
+
+    /* Icono check */
+    .icon-wrap {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 1.75rem;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 184, 148, 0.25);
+      background: rgba(0, 184, 148, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: popIn 0.5s 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .icon-wrap svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--success);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .checkmark {
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      animation: draw 0.45s 0.7s ease forwards;
+    }
+
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Logo/marca */
+    .brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.5s 0.45s ease both;
+    }
+
+    /* Título */
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1rem;
+      animation: fadeUp 0.5s 0.5s ease both;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Descripción */
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.5s 0.55s ease both;
+    }
+
+    /* Separador */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 1.75rem;
+      animation: fadeUp 0.5s 0.58s ease both;
+    }
+
+    /* Pasos / info */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.5s 0.6s ease both;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(108,92,231,0.12);
+      border: 1px solid rgba(108,92,231,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .step-text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .step-text strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Botón volver */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(108,92,231,0.1);
+      border: 1px solid rgba(108,92,231,0.3);
+      color: var(--accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      animation: fadeUp 0.5s 0.65s ease both;
+    }
+
+    .btn:hover {
+      background: rgba(108,92,231,0.18);
+      border-color: rgba(108,92,231,0.55);
+      transform: translateY(-1px);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24">
+        <polyline class="checkmark" points="4,12 9,17 20,7"></polyline>
+      </svg>
+    </div>
+
+    <div class="brand">HgSystemAi</div>
+
+    <h1>Mensaje <span>recibido</span></h1>
+
+    <p>Hemos recibido tus datos correctamente.<br>Nuestro equipo los revisará y se pondrá en contacto contigo en breve.</p>
+
+    <div class="divider"></div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Confirmación enviada</strong> — tus datos han llegado a nuestro sistema.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Análisis inicial</strong> — evaluamos cómo podemos ayudarte.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Te contactamos</strong> — recibirás respuesta en menos de 24 h.</div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"></polyline></svg>
+      Volver al inicio
+    </a>
+  </div>
+</body>
+</html>

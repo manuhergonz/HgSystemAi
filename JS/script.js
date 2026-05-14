@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formData = {
         name: document.getElementById('form-name').value,
+
         email: document.getElementById('form-email').value,
         phone: document.getElementById('form-phone').value,
         business: document.getElementById('form-business').value
@@ -280,45 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalText = submitBtn.innerHTML;
 
       // Simulate submission
-      submitBtn.innerHTML = '<span style="display:flex;align-items:center;gap:8px;justify-content:center;">⏳ Enviando...</span>';
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.7';
 
-      setTimeout(() => {
-        submitBtn.innerHTML = '<span style="display:flex;align-items:center;gap:8px;justify-content:center;">✅ ¡Enviado con éxito!</span>';
-        submitBtn.style.background = 'linear-gradient(135deg, #10B981, #63e9f5)';
-        submitBtn.style.opacity = '1';
 
-        // Show success message
-        const successMsg = document.createElement('div');
-        successMsg.style.cssText = `
-          margin-top: 16px;
-          padding: 16px;
-          background: rgba(16, 185, 129, 0.08);
-          border: 1px solid rgba(16, 185, 129, 0.15);
-          border-radius: 12px;
-          text-align: center;
-          font-size: 0.9rem;
-          color: #10B981;
-          animation: fadeInUp 0.5s ease-out;
-        `;
-        successMsg.innerHTML = '🎉 ¡Gracias! Te contactaremos en menos de 24 horas para programar tu consultoría gratuita.';
-        contactForm.appendChild(successMsg);
-
-        // Reset after 5 seconds
-        setTimeout(() => {
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-          submitBtn.style.background = '';
-          contactForm.reset();
-          if (successMsg.parentNode) {
-            successMsg.remove();
-          }
-        }, 5000);
-      }, 1500);
-
-      console.log('Lead captured:', formData);
     });
   }
 

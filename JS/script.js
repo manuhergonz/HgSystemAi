@@ -209,38 +209,33 @@ document.addEventListener('DOMContentLoaded', () => {
   counterElements.forEach(el => counterObserver.observe(el));
 
   function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-count'));
-    const originalText = element.textContent;
-    const suffix = originalText.replace(/[0-9]/g, '');
-    const prefix = suffix.startsWith('€') ? '€' : '';
-    const cleanSuffix = suffix.replace('€', '');
-    const duration = 2000;
-    const frameRate = 16;
-    const totalFrames = duration / frameRate;
-    let frame = 0;
+  const target = parseInt(element.getAttribute('data-count'));
+  const originalText = element.textContent;
 
-    const counter = setInterval(() => {
-      frame++;
-      const progress = frame / totalFrames;
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const currentCount = Math.round(easeOut * target);
+  // Extraemos el número inicial y el resto del texto
+  const numberMatch = originalText.match(/\d+/);
+  const suffix = originalText.replace(numberMatch[0], '');
 
-      if (prefix) {
-        element.textContent = `${prefix}${currentCount.toLocaleString('es-ES')}`;
-      } else {
-        element.textContent = `${currentCount}${cleanSuffix}`;
-      }
+  const duration = 2000;
+  const frameRate = 16;
+  const totalFrames = duration / frameRate;
+  let frame = 0;
 
-      if (frame >= totalFrames) {
-        clearInterval(counter);
-        if (prefix) {
-          element.textContent = `${prefix}${target.toLocaleString('es-ES')}`;
-        } else {
-          element.textContent = `${target}${cleanSuffix}`;
-        }
-      }
-    }, frameRate);
-  }
+  const counter = setInterval(() => {
+    frame++;
+    const progress = frame / totalFrames;
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const currentCount = Math.round(easeOut * target);
+
+    element.textContent = `${currentCount}${suffix}`;
+
+    if (frame >= totalFrames) {
+      clearInterval(counter);
+      element.textContent = `${target}${suffix}`;
+    }
+  }, frameRate);
+}
+
 
   // ============================================
   // METRIC PROGRESS BARS

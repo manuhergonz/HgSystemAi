@@ -392,3 +392,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 })
+
+// script.js (o como se llame tu archivo)
+
+const video = document.querySelector('video');
+const contenedor = document.querySelector('.video-bg-container');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      video.currentTime = 0;
+      video.play();
+    }
+  });
+}, { threshold: 0.3 });
+
+observer.observe(contenedor);

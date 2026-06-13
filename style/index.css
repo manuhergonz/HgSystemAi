@@ -1841,10 +1841,33 @@ body {
 }
 
 @media (max-width: 768px) {
+  .video-bg-container video {
+    display: none;
+  }
+
+  .navbar {
+    background: rgba(81, 179, 204, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
   :root {
     --section-padding: 80px 0;
   }
+.video-bg-container {
+    width: 100vw;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+    margin-left: calc(-50vw + 50%); /* rompe cualquier contenedor limitado */
+  }
 
+  .video-bg-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center; /* centra el contenido del video */
+    display: block;
+  }
   .navbar__links {
     display: none;
     position: absolute;
@@ -2561,3 +2584,19 @@ body {
     }
 }
 
+
+.contenido {
+  position: relative;
+  z-index: 1;            /* Encima del video */
+}
+.video-bg-container {
+  width: 100%;
+  overflow: hidden;  /* evita que el video se salga */
+}
+
+.video-bg-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;   /* elimina el espacio extra debajo del video */
+}

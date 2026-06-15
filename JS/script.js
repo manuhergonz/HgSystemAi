@@ -407,4 +407,75 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-observer.observe(contenedor);
+if (contenedor) {
+  observer.observe(contenedor);
+}
+
+// ============================================
+// WEB CREATION ANIMATION (PREMIUM SECTION)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const webCreationSection = document.getElementById('web-creation');
+  const mockupContainer = document.querySelector('.wc-mockup-body');
+  if (!webCreationSection || !mockupContainer) return;
+
+  const steps = document.querySelectorAll('.wc-step');
+  const dots = document.querySelectorAll('.wc-flow-dot');
+  let animationTriggered = false;
+  let currentStep = 0;
+  let animationTimeout;
+
+  const runAnimationFlow = () => {
+    if (currentStep >= steps.length) return;
+
+    // Remove active from all
+    steps.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+
+    // Add active to current
+    if (steps[currentStep]) steps[currentStep].classList.add('active');
+    
+    // Update dots (all up to current should be active)
+    for (let i = 0; i <= currentStep; i++) {
+      if (dots[i]) dots[i].classList.add('active');
+    }
+
+    // Schedule next step
+    let delay = 3500; // default delay
+    if (currentStep === 0) delay = 3500; // Chat typing
+    if (currentStep === 1) delay = 2500; // Wireframe
+    if (currentStep === 2) delay = 3500; // Code
+    if (currentStep === 3) delay = 3000; // Mobile
+    if (currentStep === 4) return; // Stop at final step
+
+    currentStep++;
+    animationTimeout = setTimeout(runAnimationFlow, delay);
+  };
+
+  // Trigger animation on scroll
+  const wcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animationTriggered) {
+        animationTriggered = true;
+        // Small delay before starting
+        setTimeout(() => {
+          currentStep = 0;
+          runAnimationFlow();
+        }, 500);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  wcObserver.observe(webCreationSection);
+
+  // Replay button logic
+  const btnReplay = document.getElementById('btn-demo-replay');
+  if (btnReplay) {
+    btnReplay.addEventListener('click', (e) => {
+      e.preventDefault();
+      clearTimeout(animationTimeout);
+      currentStep = 0;
+      runAnimationFlow();
+    });
+  }
+});

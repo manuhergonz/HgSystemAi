@@ -89,7 +89,22 @@
       </a>
 
       <ul class="navbar__links" id="navLinks">
-        <li><a href="#servicios">Servicios</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#servicios" class="nav-link-dropdown">
+            Servicios <span class="nav-dropdown-arrow">▾</span>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="#servicios">Agentes WhatsApp IA</a></li>
+            <li><a href="#servicios">Automatizaciones n8n</a></li>
+            <li><a href="#servicios">Llamadas Automáticas con IA</a></li>
+            <li>
+              <a href="#web-creation">
+                Diseño Web con IA ✦ 
+                <span class="nav-badge-nuevo">Nuevo</span>
+              </a>
+            </li>
+          </ul>
+        </li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#resultados">Resultados</a></li>
         <li><a href="#beneficios">Beneficios</a></li>
@@ -105,12 +120,15 @@
   </nav>
 
 
-<div class="video-bg-container">
+<div class="video-bg-container" style="position: relative;">
   <video autoplay muted  playsinline>
     <source src="./videos/video1.mp4" type="video/mp4">
   </video>
   <!-- Tu contenido encima -->
   <div class="contenido"></div>
+  
+  <div class="video-overlay-gradient"></div>
+  <div class="video-animated-line"></div>
 </div>
   
 

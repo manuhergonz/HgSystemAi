@@ -478,4 +478,15 @@ document.addEventListener('DOMContentLoaded', () => {
       runAnimationFlow();
     });
   }
+
+  // Navbar Dropdown Toggle for Mobile
+  const dropdownLink = document.querySelector('.nav-link-dropdown');
+  if (dropdownLink) {
+    dropdownLink.addEventListener('click', (e) => {
+      if (window.innerWidth <= 991) {
+        e.preventDefault();
+        dropdownLink.parentElement.classList.toggle('active');
+      }
+    });
+  }
 });

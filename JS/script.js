@@ -144,17 +144,38 @@ document.addEventListener('DOMContentLoaded', () => {
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
+        // Reset dropdown cuando se cierra el menú hamburguesa
+        const dropdownItem = navLinks.querySelector('.nav-item-dropdown');
+        if (dropdownItem) dropdownItem.classList.remove('active');
       }
     });
 
-    // Close mobile menu when clicking a link
+    // Mobile Dropdown Accordion — abre/cierra el submenú sin cerrar el menú principal
+    const dropdownTrigger = navLinks.querySelector('.nav-link-dropdown');
+    if (dropdownTrigger) {
+      dropdownTrigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 991) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdownTrigger.parentElement.classList.toggle('active');
+        }
+      });
+    }
+
+    // Cerrar menú al hacer clic en un link normal (NO en el trigger del dropdown)
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        // Si es el trigger del dropdown, ya se gestiona arriba → salir
+        if (link.classList.contains('nav-link-dropdown')) return;
+        // Cerrar el menú principal
         navLinks.classList.remove('active');
         const spans = navToggle.querySelectorAll('span');
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
+        // Cerrar también el submenú si estaba desplegado
+        const dropdownItem = navLinks.querySelector('.nav-item-dropdown');
+        if (dropdownItem) dropdownItem.classList.remove('active');
       });
     });
   }
@@ -288,6 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
+
+      // En móvil, el trigger del dropdown solo debe abrir el acordeón, NO hacer scroll
+      if (this.classList.contains('nav-link-dropdown') && window.innerWidth <= 991) {
+        return;
+      }
 
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
@@ -479,14 +505,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Navbar Dropdown Toggle for Mobile
-  const dropdownLink = document.querySelector('.nav-link-dropdown');
-  if (dropdownLink) {
-    dropdownLink.addEventListener('click', (e) => {
-      if (window.innerWidth <= 991) {
-        e.preventDefault();
-        dropdownLink.parentElement.classList.toggle('active');
-      }
-    });
-  }
+  // (Dropdown toggle is handled inside the navToggle block above)
 });

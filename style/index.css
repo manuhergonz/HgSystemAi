@@ -4313,7 +4313,7 @@ body {
   border: 1px solid rgba(0, 180, 216, 0.3);
 }
 
-/* Mobile behavior (Accordion) */
+/* Mobile behavior (Accordion suave) */
 @media (max-width: 991px) {
   .nav-dropdown-menu {
     position: static;
@@ -4321,21 +4321,56 @@ body {
     visibility: visible;
     transform: none;
     border: none;
+    border-left: 1px solid rgba(99, 233, 245, 0.15);
     background: transparent;
     box-shadow: none;
     padding: 0 0 0 16px;
-    margin-top: 10px;
-    display: none;
-    /* hidden by default on mobile until toggled */
+    margin-top: 8px;
     min-width: auto;
+    /* Acordeón con max-height animado */
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                padding 0.25s ease;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .nav-item-dropdown.active .nav-dropdown-menu {
-    display: flex;
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 8px 0 4px 16px;
   }
 
   .nav-item-dropdown.active .nav-dropdown-arrow {
     transform: rotate(180deg);
+  }
+
+  /* Separador visual del trigger en móvil */
+  .nav-link-dropdown {
+    width: 100%;
+    justify-content: space-between;
+    padding: 4px 0;
+  }
+
+  .nav-dropdown-arrow {
+    transition: transform 0.28s ease;
+  }
+
+  /* Links del submenú en móvil */
+  .nav-dropdown-menu a {
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    color: rgba(204, 214, 246, 0.8);
+    border-radius: 6px;
+  }
+
+  .nav-dropdown-menu a:hover {
+    background: rgba(99, 233, 245, 0.06);
+    color: #63e9f5;
   }
 }
 

@@ -6,6 +6,47 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ============================================
+  // THEME SWITCHER (Light / Dark)
+  // ============================================
+  (() => {
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Aplica el tema y anima la transición sin afectar al estado inicial
+    function applyTheme(theme, animate) {
+      if (animate) {
+        root.classList.add('theme-transition');
+        // Quita la clase tras la transición para no interferir con otros estilos
+        window.setTimeout(() => root.classList.remove('theme-transition'), 450);
+      }
+      root.setAttribute('data-theme', theme);
+      if (toggle) {
+        toggle.setAttribute('aria-checked', String(theme === 'dark'));
+      }
+    }
+
+    // El tema ya fue fijado por el script inline del <head> (evita parpadeo);
+    // aquí solo sincronizamos el estado del botón.
+    applyTheme(root.getAttribute('data-theme') || 'dark', false);
+
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        applyTheme(next, true);
+      });
+    }
+
+    // Si el usuario no ha elegido manualmente, seguir la preferencia del sistema
+    systemDark.addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light', true);
+      }
+    });
+  })();
+
+  // ============================================
   // PARTICLE CANVAS SYSTEM
   // ============================================
   const canvas = document.getElementById('particleCanvas');
@@ -416,9 +457,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ============================================
+  // FAQ ACCORDION
+  // ============================================
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-item__trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      // Close all other items (only one open at a time)
+      faqItems.forEach(other => {
+        if (other !== item && other.classList.contains('active')) {
+          other.classList.remove('active');
+          const otherTrigger = other.querySelector('.faq-item__trigger');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current item
+      item.classList.toggle('active', !isActive);
+      trigger.setAttribute('aria-expanded', String(!isActive));
+    });
+  });
+
 
 })
-
 // script.js (o como se llame tu archivo)
 
 const video = document.querySelector('video');

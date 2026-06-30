@@ -4,7 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tema claro/oscuro: se aplica ANTES de pintar para evitar parpadeo (FOUC) -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = stored || (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <title>HG System AI — Transforma Tu Negocio con Inteligencia Artificial</title>
+  <link rel="canonical" href="https://hgsystemai.com/">
   <meta name="description"
     content="HG System AI: automatizaciones, chatbots, agentes autónomos y llamadas con IA para empresas. Ahorra 15-30 horas semanales y reduce costes hasta un 40%. Consultoría gratuita.">
   <meta name="keywords"
@@ -16,15 +32,16 @@
   <meta property="og:description"
     content="Soluciones de IA para empresas. Ahorra hasta 30 horas semanales y reduce costes operativos un 40%.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://hgsystemai.com/img/logoHDpng.png">
+  <meta property="og:url" content="https://hgsystemai.com/">
+  <meta property="og:image" content="https://hgsystemai.com/img/logoHDwWebP.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="HG System AI — Automatización e IA para Empresas">
   <meta name="twitter:description"
     content="Soluciones de IA para empresas. Ahorra hasta 30 horas semanales y reduce costes operativos un 40%.">
-  <meta name="twitter:image" content="https://hgsystemai.com/img/logoHDpng.png">
+  <meta name="twitter:image" content="https://hgsystemai.com/img/logoHDwWebP.webp">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/logoHDpng.png">
+  <link rel="icon" type="image/webp" href="img/logoHDwWebP.webp">
 
   <!-- Google Fonts -->
 
@@ -43,16 +60,63 @@
     "@type": "ProfessionalService",
     "name": "HG System AI",
     "url": "https://hgsystemai.com",
-    "logo": "https://hgsystemai.com/img/logoHDpng.png",
+    "logo": "https://hgsystemai.com/img/logoHDwWebP.webp",
     "email": "info@hgsystemai.com",
     "telephone": "+34691861697",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Málaga",
+      "addressRegion": "Andalucía",
       "addressCountry": "ES"
     },
-    "areaServed": "ES",
-    "description": "Agencia de automatización e inteligencia artificial para empresas en España."
+    "areaServed": {
+      "@type": "Country",
+      "name": "España"
+    },
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "priceRange": "€€",
+    "description": "Agencia de automatización e inteligencia artificial para empresas en España. Chatbots, agentes autónomos, llamadas con IA y automatizaciones con n8n.",
+    "sameAs": [
+      "https://www.instagram.com/hgsystem.ai"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de IA para empresas",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Automatizaciones con IA",
+            "description": "Automatización de procesos empresariales repetitivos con inteligencia artificial y n8n."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Agentes Autónomos de IA",
+            "description": "Agentes de IA que gestionan tareas complejas de forma autónoma las 24 horas."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Chatbots Inteligentes para WhatsApp",
+            "description": "Chatbots con IA integrados en WhatsApp para atención al cliente automatizada."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Llamadas Automáticas con IA",
+            "description": "Sistema de llamadas automáticas con voz artificial para captación y seguimiento de clientes."
+          }
+        }
+      ]
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -84,7 +148,7 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="navbar__logo">
-        <img src="img/logoHDpng.png" alt="HG System AI Logo">
+        <img src="img/logoHDwWebP.webp" alt="HG System AI Logo" width="256" height="256">
          <span class="navbar__logo-text">System<span>AI</span></span>
       </a>
 
@@ -108,8 +172,34 @@
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#resultados">Resultados</a></li>
         <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto" class="navbar__cta">Consultoría Gratuita</a></li>
       </ul>
+
+      <button class="theme-switch" id="themeToggle" type="button" role="switch"
+        aria-label="Cambiar entre modo claro y oscuro" title="Cambiar tema">
+        <span class="theme-switch__knob">
+          <!-- Icono sol (modo claro) -->
+          <svg class="theme-switch__icon theme-switch__icon--sun" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4.5" />
+            <line x1="12" y1="1.5" x2="12" y2="3.5" />
+            <line x1="12" y1="20.5" x2="12" y2="22.5" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1.5" y1="12" x2="3.5" y2="12" />
+            <line x1="20.5" y1="12" x2="22.5" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <!-- Icono luna (modo oscuro) -->
+          <svg class="theme-switch__icon theme-switch__icon--moon" width="19" height="19" viewBox="0 0 24 24"
+            fill="currentColor" stroke="none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </span>
+        <span class="theme-switch__label"></span>
+      </button>
 
       <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
         <span></span>
@@ -121,7 +211,7 @@
 
 
 <div class="video-bg-container" style="position: relative;">
-  <video autoplay muted  playsinline>
+  <video autoplay muted playsinline preload="none">
     <source src="./videos/video1.mp4" type="video/mp4">
   </video>
   <!-- Tu contenido encima -->
@@ -532,7 +622,7 @@
             <div class="saas-mockup__header saas-mockup__header--whatsapp">
               <div class="wa-header-left">
                 <div class="wa-avatar">
-                  <img src="img/logoHDpng.png" alt="Bot Avatar">
+                  <img src="img/logoHDwWebP.webp" alt="Bot Avatar" width="256" height="256" loading="lazy">
                 </div>
                 <div class="wa-info">
                   <div class="wa-name">HG System AI Bot</div>
@@ -1045,6 +1135,163 @@
   </section>
 
   <!-- ============================================
+       FAQ SECTION
+       ============================================ -->
+  <section class="faq" id="faq">
+    <div class="section-glow"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Preguntas frecuentes</span>
+        <h2 class="section-title">Resolvemos Tus <span class="gradient-text">Dudas</span></h2>
+        <p class="section-subtitle">Todo lo que necesitas saber antes de dar el paso. Si no encuentras tu respuesta, agenda una consultoría gratuita.</p>
+      </div>
+
+      <div class="faq__list reveal">
+
+        <div class="faq-item" id="faq-item-1">
+          <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-answer-1">
+            <span class="faq-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4"/>
+                <path d="M12 8h.01"/>
+              </svg>
+            </span>
+            <span class="faq-item__question">¿Cuánto tiempo tarda la implementación?</span>
+            <span class="faq-item__toggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="faq-line-h" x1="5" y1="12" x2="19" y2="12"/>
+                <line class="faq-line-v" x1="12" y1="5" x2="12" y2="19"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-1" role="region">
+            <div class="faq-item__answer-inner">
+              <p>Dependiendo de la solución, entre <strong>1 y 3 semanas</strong>. La mayoría de nuestros clientes tienen su IA funcionando en menos de 2 semanas. Durante todo el proceso, tu negocio sigue operando con total normalidad.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-item-2">
+          <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-answer-2">
+            <span class="faq-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="faq-item__question">¿Necesito conocimientos técnicos?</span>
+            <span class="faq-item__toggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="faq-line-h" x1="5" y1="12" x2="19" y2="12"/>
+                <line class="faq-line-v" x1="12" y1="5" x2="12" y2="19"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-2" role="region">
+            <div class="faq-item__answer-inner">
+              <p><strong>No.</strong> Nosotros nos encargamos de todo: configuración, integración y puesta en marcha. Tú solo necesitas contarnos cómo funciona tu negocio y nosotros hacemos el resto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-item-3">
+          <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-answer-3">
+            <span class="faq-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </span>
+            <span class="faq-item__question">¿Cuánto cuesta?</span>
+            <span class="faq-item__toggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="faq-line-h" x1="5" y1="12" x2="19" y2="12"/>
+                <line class="faq-line-v" x1="12" y1="5" x2="12" y2="19"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-3" role="region">
+            <div class="faq-item__answer-inner">
+              <p>Cada solución es <strong>a medida</strong>. Agenda tu consultoría gratuita y te damos un presupuesto personalizado sin compromiso. No hay costes ocultos ni contratos de permanencia.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-item-4">
+          <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-answer-4">
+            <span class="faq-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </span>
+            <span class="faq-item__question">¿Funciona para cualquier tipo de negocio?</span>
+            <span class="faq-item__toggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="faq-line-h" x1="5" y1="12" x2="19" y2="12"/>
+                <line class="faq-line-v" x1="12" y1="5" x2="12" y2="19"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-4" role="region">
+            <div class="faq-item__answer-inner">
+              <p><strong>Sí.</strong> Trabajamos con clínicas, peluquerías, restaurantes, despachos y cualquier negocio que quiera automatizar procesos repetitivos. Si tienes tareas que se repiten, podemos ayudarte.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-item-5">
+          <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-answer-5">
+            <span class="faq-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </span>
+            <span class="faq-item__question">¿Qué pasa si no estoy satisfecho?</span>
+            <span class="faq-item__toggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="faq-line-h" x1="5" y1="12" x2="19" y2="12"/>
+                <line class="faq-line-v" x1="12" y1="5" x2="12" y2="19"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-5" role="region">
+            <div class="faq-item__answer-inner">
+              <p>Ofrecemos <strong>soporte continuo</strong> y optimización hasta que los resultados sean los esperados. Tu satisfacción es nuestra prioridad y trabajamos hasta que consigas el rendimiento deseado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-item-6">
+          <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-answer-6">
+            <span class="faq-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </span>
+            <span class="faq-item__question">¿Puedo empezar con una sola automatización?</span>
+            <span class="faq-item__toggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="faq-line-h" x1="5" y1="12" x2="19" y2="12"/>
+                <line class="faq-line-v" x1="12" y1="5" x2="12" y2="19"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-6" role="region">
+            <div class="faq-item__answer-inner">
+              <p><strong>¡Por supuesto!</strong> Muchos clientes empiezan con un chatbot o una automatización concreta y van ampliando según ven los resultados. No necesitas comprometer todo de golpe.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        CTA FINAL SECTION
        ============================================ -->
   <section class="cta-section" id="contacto">
@@ -1061,7 +1308,7 @@
               En 30 minutos analizamos tu negocio y te mostramos exactamente cómo la IA puede ahorrarte tiempo, dinero y
               dolores de cabeza. Sin compromiso.
             </p>
-            <!-- 
+            <!--
             <div class="cta-section__bonus">
               <span class="cta-section__bonus-icon">🎁</span>
               <div class="cta-section__bonus-text">
@@ -1069,9 +1316,10 @@
                 Descarga gratis: "Checklist de 10 Procesos que Puedes Automatizar Ya" — Valorado en €97, tuyo por agendar hoy.
               </div>
             </div>
-          </div> -->
+            -->
+          </div>
 
-            <form class="cta-form" id="contactForm">
+          <form class="cta-form" id="contactForm">
               <h3 class="cta-form__title">📅 Reserva tu consultoría</h3>
               <p class="cta-form__subtitle">Completa el formulario y te contactamos en menos de 24h</p>
 
@@ -1128,7 +1376,7 @@
       <div class="footer__top">
         <div class="footer__brand">
           <a href="#" class="footer__brand-logo">
-            <img src="img/logoHDpng.png" alt="HG System AI">
+            <img src="img/logoHDwWebP.webp" alt="HG System AI" width="256" height="256" loading="lazy">
             <span class="footer__brand-name">System <span>AI</span></span>
           </a>
           <p class="footer__brand-desc">Transformamos negocios con Inteligencia Artificial. Automatizaciones, chatbots,
@@ -1181,6 +1429,7 @@
             <li><a href="#resultados">Resultados</a></li>
             <li><a href="#proceso">Cómo Funciona</a></li>
             <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </div>
@@ -1189,13 +1438,13 @@
           <h4 class="footer__col-title">Contacto</h4>
           <ul class="footer__links">
             <li>
-              <!-- <a href="mailto:info@hgsystemai.com">
+              <a href="mailto:info@hgsystemai.com">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
-                info@hgsystemai.com
-              </a> -->
+                hgsystemai@gmail.com
+              </a>
             </li>
             <li>
               <a href="tel:+34691861697">
@@ -1203,7 +1452,7 @@
                   <path
                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                +34 691 86 16 97
+                +34 691 861 697
               </a>
             </li>
             <li>
@@ -1222,9 +1471,9 @@
       <div class="footer__bottom">
         <p class="footer__copyright">© 2026 HG System AI Todos los derechos reservados.</p>
         <div class="footer__legal">
-          <a href="#">Política de Privacidad</a>
-          <a href="#">Aviso Legal</a>
-          <a href="#">Cookies</a>
+          <a href="privacidad.html">Política de Privacidad</a>
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="cookies.html">Cookies</a>
         </div>
       </div>
     </div>
@@ -1242,8 +1491,8 @@
     <span class="whatsapp-float__pulse"></span>
   </a>
 
-  <script src="JS/script.js"></script>
-  <script src="JS/n8n-send.js"></script>
+  <script src="JS/script.js" defer></script>
+  <script src="JS/n8n-send.js" defer></script>
 </body>
 
 </html>

@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "framer-motion": "^12.40.0"
-  },
   "scripts": {
     "start": "npx serve ."
   }

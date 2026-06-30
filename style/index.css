@@ -132,6 +132,45 @@
   box-shadow: 0 4px 30px rgba(20, 45, 80, 0.1);
 }
 
+/* Navbar transparente en light mode (sobre el vídeo oscuro): texto blanco */
+:root[data-theme="light"] .navbar:not(.scrolled) .navbar__logo-text {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+:root[data-theme="light"] .navbar:not(.scrolled) .navbar__logo-text span {
+  -webkit-text-fill-color: transparent;
+}
+
+:root[data-theme="light"] .navbar:not(.scrolled) .navbar__links a {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+:root[data-theme="light"] .navbar:not(.scrolled) .navbar__links a:hover {
+  color: #ffffff;
+}
+
+/* Al hacer scroll en light mode: colores oscuros del tema */
+:root[data-theme="light"] .navbar.scrolled .navbar__logo-text {
+  color: var(--text-primary);
+}
+
+:root[data-theme="light"] .navbar.scrolled .navbar__links a {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="light"] .theme-switch {
+  background:#EEF3F9;
+  border-color: #5BD3E4;
+}
+
+:root[data-theme="light"] .theme-switch:hover {
+  background: rgba(12, 23, 38, 0.11);
+}
+
+:root[data-theme="light"] .theme-switch__knob {
+  color: rgba(12, 23, 38, 0.75);
+}
+
 :root[data-theme="light"] .cta-form {
   background: rgba(255, 255, 255, 0.72);
 }
@@ -170,27 +209,28 @@
 .theme-switch {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  height:40px;
-  margin-left: 10px;
-  padding: 5px 22px 5px 5px;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 8px;
+  padding: 0;
   border: none;
-  border-radius: 999px;
+  border-radius: 50%;
   cursor: pointer;
   position: relative;
   z-index: 3;
-  background: linear-gradient(145deg, #ffffff, #e4e7f0);
-  box-shadow: 0 12px 24px rgba(20, 35, 70, 0.22),
-    inset 0 1px 1px rgba(255, 255, 255, 0.9);
-  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.15s ease;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.3s ease, transform 0.15s ease;
 }
 
 .theme-switch:hover {
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+  transform: scale(1.1);
 }
 
 .theme-switch:active {
-  transform: translateY(0) scale(0.98);
+  transform: scale(0.95);
 }
 
 .theme-switch:focus-visible {
@@ -199,39 +239,20 @@
 }
 
 .theme-switch__knob {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background: linear-gradient(145deg, #2c3150, #181b2e);
-  box-shadow: 0 4px 10px rgba(10, 15, 35, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .theme-switch__icon {
   position: absolute;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .theme-switch__label {
-  font-family: var(--font-heading);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: #20243c;
-  transition: color 0.4s ease;
-}
-
-.theme-switch__label::after {
-  content: "Light Mode";
+  display: none;
 }
 
 /* Iconos: por defecto (light) se ve el sol; la luna está oculta */
@@ -247,25 +268,16 @@
 
 /* ===== Estado DARK MODE ===== */
 :root[data-theme="dark"] .theme-switch {
-  background: linear-gradient(145deg, #2d3252, #171a2c);
-  box-shadow: 0 12px 28px rgba(60, 50, 120, 0.4),
-    0 0 0 1px rgba(120, 120, 200, 0.08),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #5EDAE9;
+}
+
+:root[data-theme="dark"] .theme-switch:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 :root[data-theme="dark"] .theme-switch__knob {
-  background: linear-gradient(145deg, #ffffff, #dfe3f0);
-  box-shadow: 0 4px 10px rgba(10, 15, 40, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.9);
-  color: #20243c;
-}
-
-:root[data-theme="dark"] .theme-switch__label {
-  color: #f0f2fb;
-}
-
-:root[data-theme="dark"] .theme-switch__label::after {
-  content: "Dark Mode";
+  color: rgba(255, 255, 255, 0.85);
 }
 
 :root[data-theme="dark"] .theme-switch__icon--sun {
@@ -278,16 +290,10 @@
   transform: rotate(0) scale(1);
 }
 
-/* En móvil se compacta a solo el knob para no ocupar la barra */
+/* En móvil ya es compacto, sin cambios necesarios */
 @media (max-width: 768px) {
   .theme-switch {
-    gap: 0;
-    padding: 5px;
-    margin-left: 6px;
-  }
-
-  .theme-switch__label {
-    display: none;
+    margin-left: 4px;
   }
 }
 
@@ -448,6 +454,13 @@ body {
   height: 42px;
   width: auto;
   border-radius: 10px;
+  filter: brightness(6) drop-shadow(0 0 8px rgba(99, 233, 245, 0.3));
+  transition: filter 0.3s ease;
+}
+
+/* En modo claro + navbar con fondo (scrolled): logo a su color real */
+:root[data-theme="light"] .navbar.scrolled .navbar__logo img {
+  filter: brightness(1) drop-shadow(0 2px 6px rgba(20, 45, 80, 0.15));
 }
 
 .navbar__logo-text {

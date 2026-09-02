@@ -3226,13 +3226,8 @@ body {
 }
 
 
-.contenido {
-  position: relative;
-  z-index: 1;
-  /* Encima del video */
-}
-
 .video-bg-container {
+  position: relative;
   width: 100%;
   overflow: hidden;
   /* evita que el video se salga */

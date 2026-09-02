@@ -271,33 +271,33 @@ document.addEventListener('DOMContentLoaded', () => {
   counterElements.forEach(el => counterObserver.observe(el));
 
   function animateCounter(element) {
-  const target = parseInt(element.getAttribute('data-count'));
-  const originalText = element.textContent;
+    const target = parseInt(element.getAttribute('data-count'), 10);
+    const originalText = element.textContent;
 
-  // Extraemos el número inicial y el resto del texto
-  const numberMatch = originalText.match(/\d+/);
-  const suffix = originalText.replace(numberMatch[0], '');
+    // Extraemos el número inicial y el resto del texto (p. ej. "150+" → 150 y "+")
+    const numberMatch = originalText.match(/\d+/);
+    if (!numberMatch || isNaN(target)) return;
+    const suffix = originalText.replace(numberMatch[0], '');
 
-  const duration = 2000;
-  const frameRate = 16;
-  const totalFrames = duration / frameRate;
-  let frame = 0;
+    const duration = 2000;
+    const frameRate = 16;
+    const totalFrames = duration / frameRate;
+    let frame = 0;
 
-  const counter = setInterval(() => {
-    frame++;
-    const progress = frame / totalFrames;
-    const easeOut = 1 - Math.pow(1 - progress, 3);
-    const currentCount = Math.round(easeOut * target);
+    const counter = setInterval(() => {
+      frame++;
+      const progress = frame / totalFrames;
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const currentCount = Math.round(easeOut * target);
 
-    element.textContent = `${currentCount}${suffix}`;
+      element.textContent = `${currentCount}${suffix}`;
 
-    if (frame >= totalFrames) {
-      clearInterval(counter);
-      element.textContent = `${target}${suffix}`;
-    }
-  }, frameRate);
-}
-
+      if (frame >= totalFrames) {
+        clearInterval(counter);
+        element.textContent = `${target}${suffix}`;
+      }
+    }, frameRate);
+  }
 
   // ============================================
   // METRIC PROGRESS BARS
@@ -317,31 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   metricBars.forEach(bar => barObserver.observe(bar));
 
-  // ============================================
-  // FORM HANDLING
-  // ============================================
-  //const contactForm = document.getElementById('contactForm');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const formData = {
-        name: document.getElementById('form-name').value,
-
-        email: document.getElementById('form-email').value,
-        phone: document.getElementById('form-phone').value,
-        business: document.getElementById('form-business').value
-      };
-
-      const submitBtn = document.getElementById('form-submit');
-      const originalText = submitBtn.innerHTML;
-
-      // Simulate submission
-
-
-    });
-  }
+  // NOTA: el envío del formulario de contacto se gestiona en JS/n8n-send.js
 
   // ============================================
   // SMOOTH SCROLL FOR ANCHOR LINKS
@@ -485,23 +461,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-})
-// script.js (o como se llame tu archivo)
+});
 
-const video = document.querySelector('video');
+// ============================================
+// VIDEO DE FONDO — reinicia la reproducción al entrar en pantalla
+// ============================================
+const video = document.querySelector('.video-bg-container video');
 const contenedor = document.querySelector('.video-bg-container');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      video.currentTime = 0;
-      video.play();
-    }
-  });
-}, { threshold: 0.3 });
+if (video && contenedor) {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.currentTime = 0;
+        video.play();
+      }
+    });
+  }, { threshold: 0.3 });
 
-if (contenedor) {
-  observer.observe(contenedor);
+  videoObserver.observe(contenedor);
 }
 
 // ============================================
